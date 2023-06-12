@@ -1,0 +1,22 @@
+{
+    "name": "Custom Lichess Sounds",
+    "version": "0.1",
+    "manifest_version": 3,
+    "description": "redirect lichess sounds",
+    "host_permissions": [
+        "https://lichess.org/*",
+        "https://lichess1.org/*"
+    ],
+    "permissions": [
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback",
+        "declarativeNetRequestWithHostAccess",
+        "storage"
+    ],
+    "action": {
+        "default_popup": "defaultPopup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    }
+}
