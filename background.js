@@ -21,6 +21,7 @@ chrome.runtime.onMessage.addListener(function (message) {
 
 function updateDataAndRules(data) {
     console.log("Data received:", data);
+    if (!data) return;
 
     const ruleIdsToRemove = Array.from({ length: 32 }, (_, i) => i + 1);
 
@@ -31,13 +32,13 @@ function updateDataAndRules(data) {
                 "id": 1,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Berserk.ogg",
+                    "regexFilter": "Berserk\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.berserk === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.berserk
                     }
@@ -47,13 +48,13 @@ function updateDataAndRules(data) {
                 "id": 2,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Capture.ogg",
+                    "regexFilter": "Capture\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.capture === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.capture
                     }
@@ -63,13 +64,13 @@ function updateDataAndRules(data) {
                 "id": 3,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Check.ogg",
+                    "regexFilter": "Check\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.check === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.check
                     }
@@ -79,13 +80,13 @@ function updateDataAndRules(data) {
                 "id": 4,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Confirmation.ogg",
+                    "regexFilter": "Confirmation\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.confirmation === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.confirmation
                     }
@@ -95,13 +96,13 @@ function updateDataAndRules(data) {
                 "id": 5,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown0.ogg",
+                    "regexFilter": "CountDown0\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown0 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown0
                     }
@@ -111,13 +112,13 @@ function updateDataAndRules(data) {
                 "id": 6,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown1.ogg",
+                    "regexFilter": "CountDown1\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown1 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown1
                     }
@@ -127,13 +128,13 @@ function updateDataAndRules(data) {
                 "id": 7,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown2.ogg",
+                    "regexFilter": "CountDown2\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown2 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown2
                     }
@@ -143,13 +144,13 @@ function updateDataAndRules(data) {
                 "id": 8,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown3.ogg",
+                    "regexFilter": "CountDown3\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown3 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown3
                     }
@@ -159,13 +160,13 @@ function updateDataAndRules(data) {
                 "id": 9,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown4.ogg",
+                    "regexFilter": "CountDown4\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown4 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown4
                     }
@@ -175,13 +176,13 @@ function updateDataAndRules(data) {
                 "id": 10,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown5.ogg",
+                    "regexFilter": "CountDown5\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown5 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown5
                     }
@@ -191,13 +192,13 @@ function updateDataAndRules(data) {
                 "id": 11,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown6.ogg",
+                    "regexFilter": "CountDown6\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown6 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown6
                     }
@@ -207,13 +208,13 @@ function updateDataAndRules(data) {
                 "id": 12,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown7.ogg",
+                    "regexFilter": "CountDown7\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown7 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown7
                     }
@@ -223,13 +224,13 @@ function updateDataAndRules(data) {
                 "id": 13,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown8.ogg",
+                    "regexFilter": "CountDown8\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown8 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown8
                     }
@@ -239,13 +240,13 @@ function updateDataAndRules(data) {
                 "id": 14,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown9.ogg",
+                    "regexFilter": "CountDown9\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown9 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown9
                     }
@@ -255,13 +256,13 @@ function updateDataAndRules(data) {
                 "id": 15,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "CountDown10.ogg",
+                    "regexFilter": "CountDown10\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.countDown10 === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.countDown10
                     }
@@ -271,13 +272,13 @@ function updateDataAndRules(data) {
                 "id": 16,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Defeat.ogg",
+                    "regexFilter": "Defeat\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.defeat === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.defeat
                     }
@@ -287,13 +288,13 @@ function updateDataAndRules(data) {
                 "id": 17,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Draw.ogg",
+                    "regexFilter": "Draw\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.draw === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.draw
                     }
@@ -303,13 +304,13 @@ function updateDataAndRules(data) {
                 "id": 18,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Error.ogg",
+                    "regexFilter": "Error\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.error === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.error
                     }
@@ -319,29 +320,29 @@ function updateDataAndRules(data) {
                 "id": 19,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Explosion.ogg",
+                    "regexFilter": "Explosion\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.explosion === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.explosion
                     }
-                }
+                },
             },
             {
                 "id": 20,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "GenericNotify.ogg",
+                    "regexFilter": "GenericNotify\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.genericNotify === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.genericNotify
                     }
@@ -351,13 +352,13 @@ function updateDataAndRules(data) {
                 "id": 21,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "LowTime.ogg",
+                    "regexFilter": "LowTime\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.lowTime === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.lowTime
                     }
@@ -367,13 +368,13 @@ function updateDataAndRules(data) {
                 "id": 22,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Move.ogg",
+                    "regexFilter": "Move\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.move === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.move
                     }
@@ -383,13 +384,13 @@ function updateDataAndRules(data) {
                 "id": 23,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "NewChallenge.ogg",
+                    "regexFilter": "NewChallenge\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.newChallenge === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.newChallenge
                     }
@@ -399,13 +400,13 @@ function updateDataAndRules(data) {
                 "id": 24,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "NewPM.ogg",
+                    "regexFilter": "NewPM\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.newPM === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.newPM
                     }
@@ -415,13 +416,13 @@ function updateDataAndRules(data) {
                 "id": 25,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "OutOfBound.ogg",
+                    "regexFilter": "OutOfBound\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.outOfBound === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.outOfBound
                     }
@@ -431,13 +432,13 @@ function updateDataAndRules(data) {
                 "id": 26,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Select.ogg",
+                    "regexFilter": "Select\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.select === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.select
                     }
@@ -447,13 +448,13 @@ function updateDataAndRules(data) {
                 "id": 27,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "SocialNotify.ogg",
+                    "regexFilter": "SocialNotify\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.socialNotify === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.socialNotify
                     }
@@ -463,13 +464,13 @@ function updateDataAndRules(data) {
                 "id": 28,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Tournament1st.ogg",
+                    "regexFilter": "Tournament1st\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.tournament1st === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.tournament1st
                     }
@@ -479,13 +480,13 @@ function updateDataAndRules(data) {
                 "id": 29,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Tournament2nd.ogg",
+                    "regexFilter": "Tournament2nd\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.tournament2nd === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.tournament2nd
                     }
@@ -495,13 +496,13 @@ function updateDataAndRules(data) {
                 "id": 30,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Tournament3rd.ogg",
+                    "regexFilter": "Tournament3rd\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.tournament3rd === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.tournament3rd
                     }
@@ -511,13 +512,13 @@ function updateDataAndRules(data) {
                 "id": 31,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "TournamentOther.ogg",
+                    "regexFilter": "TournamentOther\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.tournamentOther === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.tournamentOther
                     }
@@ -527,13 +528,13 @@ function updateDataAndRules(data) {
                 "id": 32,
                 "priority": 1,
                 "condition": {
-                    "urlFilter": "Victory.ogg",
+                    "regexFilter": "Victory\.(ogg|mp3)",
                     "resourceTypes": [
                         "xmlhttprequest"
                     ]
                 },
                 "action": {
-                    "type": "redirect",
+                    "type": data.victory === "data:" ? "allow" : "redirect",
                     "redirect": {
                         "url": data.victory
                     }
